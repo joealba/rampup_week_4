@@ -9,9 +9,20 @@ end
 class Card
   include CardDefinition
   attr_accessor :suit, :value
+
   def initialize(suit,value)
     @suit = suit
     @value = value
+  end
+
+  def number_value
+    if value == 'A'
+      11
+    elsif ['J','Q','K'].include?(value)
+      10
+    else
+      value
+    end
   end
 end
 
