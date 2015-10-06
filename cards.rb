@@ -26,6 +26,11 @@ class Deck
         @cards << Card.new(suit,value)
       end
     end
+    self.shuffle
+  end
+
+  def shuffle
+    self.cards.shuffle!
   end
 end
 
@@ -47,6 +52,13 @@ RSpec.describe "card stuff" do
 
     it "creates a 52 card deck" do
       expect(Deck.new.cards.length).to eq 52
+    end
+
+    it "can shuffle a deck" do
+      deck = Deck.new
+      cards = deck.cards.dup
+      deck.shuffle
+      expect(deck.cards).not_to eq cards
     end
   end
 
