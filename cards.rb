@@ -10,11 +10,27 @@ class Card
   include CardDefinition
 end
 
+class Deck
+  include CardDefinition
 
-RSpec.describe "cards" do
-  it "can access the CardDefinition constants" do
-    expect(Card::SUITS.is_a? Array).to eq true
-    expect(Card::SUITS.length).to eq 4
+end
+
+
+RSpec.describe "card stuff" do
+
+  describe "cards" do
+    it "can access the CardDefinition constants" do
+      expect(Card::SUITS.is_a? Array).to eq true
+      expect(Card::SUITS.length).to eq 4
+    end
   end
+
+  describe "deck" do
+    it "can access the CardDefinition constants" do
+      expect(Deck::SUITS.is_a? Array).to eq true
+      expect(Deck::SUITS.length).to eq 4
+    end
+  end
+
 end
 
