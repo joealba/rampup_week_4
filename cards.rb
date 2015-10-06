@@ -8,11 +8,25 @@ end
 
 class Card
   include CardDefinition
+  attr_accessor :suit, :value
+  def initialize(suit,value)
+    @suit = suit
+    @value = value
+  end
 end
 
 class Deck
   include CardDefinition
+  attr_accessor :cards
 
+  def initialize
+    @cards = []
+    SUITS.each do |suit|
+      VALUES.each do |value|
+        @cards << Card.new(suit,value)
+      end
+    end
+  end
 end
 
 
@@ -29,6 +43,10 @@ RSpec.describe "card stuff" do
     it "can access the CardDefinition constants" do
       expect(Deck::SUITS.is_a? Array).to eq true
       expect(Deck::SUITS.length).to eq 4
+    end
+
+    it "creates a 52 card deck" do
+      expect(Deck.new.cards.length).to eq 52
     end
   end
 
